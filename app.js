@@ -336,11 +336,27 @@ const date = new Date();
 let timeHour = date.getHours().toLocaleString().split("");
 let timeMinute = date.getMinutes().toLocaleString().split("");
 
-let hour1 = timeHour[0];
-let hour2 = timeHour[1];
-let minute1 = timeMinute[0];
-let minute2 = timeMinute[1];
+let hour1;
+let hour2;
 
+let minute1;
+let minute2;
+
+if (timeHour.length === 1) {
+  hour1 = 0;
+  hour2 = timeHour[0];
+} else {
+  hour1 = timeHour[0];
+  hour2 = timeHour[1];
+}
+console.log(timeMinute);
+if (timeMinute.length === 1) {
+  minute1 = 0;
+  minute2 = timeMinute[0];
+} else {
+  minute1 = timeMinute[0];
+  minute2 = timeMinute[1];
+}
 animation = (hour1, hour2, minute1, minute2) => {
   for (let i = 0; i < numbers[0].length; i++) {
     let hh1 = numbers[hour1][i].hour * 30;
@@ -358,14 +374,10 @@ animation = (hour1, hour2, minute1, minute2) => {
     hr3[i].style.transform = `rotateZ(${hh3 + 360}deg)`;
     hr4[i].style.transform = `rotateZ(${hh4 + 360}deg)`;
 
-
-
     mn1[i].style.transform = `rotateZ(${mm1 + 360}deg)`;
     mn2[i].style.transform = `rotateZ(${mm2 + 360}deg)`;
     mn3[i].style.transform = `rotateZ(${mm3 + 360}deg)`;
     mn4[i].style.transform = `rotateZ(${mm4 + 360}deg)`;
-
   }
 };
-console.log(hour1);
 animation(hour1, hour2, minute1, minute2);
